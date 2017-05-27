@@ -5,6 +5,7 @@ import os
 class GooglemockConan(ConanFile):
     name = "googlemock"
     version = "1.8.0"
+    url = "https://github.com/casillas777/conan-googlemock.git"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
