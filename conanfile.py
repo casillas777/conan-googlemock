@@ -31,7 +31,7 @@ conan_basic_setup()''')
             cmake.definitions['BUILD_SHARED_LIBS'] = 'ON'
 
         if self.settings.compiler == 'Visual Studio':
-            if self.settings.compiler.runtime == 'MD':
+            if (self.settings.compiler.runtime == 'MD') or (self.settings.compiler.runtime == 'MDd'):
                 cmake.definitions['gtest_force_shared_crt'] = 'ON'
 			
         cmake.configure(source_dir=os.path.join(self.conanfile_directory, self._inner_folder))
