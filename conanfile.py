@@ -46,8 +46,14 @@ conan_basic_setup()''')
         self.copy("*.h", dst="include", src="%s/googletest/include" % self._inner_folder)
 		
         self.copy("*.lib", dst="lib", src="lib", keep_path=False)
+        self.copy("*.a", dst="lib", src="lib", keep_path=False)
+        self.copy("*.dll", dst="lib", src="lib", keep_path=False)
+        self.copy("*.so", dst="lib", src="lib", keep_path=False)
 
     def package_info(self):
         self.cpp_info.includedirs = ["include"]
         self.cpp_info.libs = [ "gmock", "gmock_main", "gtest", "gtest_main" ]
+        if (self.settings.os == "Linux"):
+            self.cpp_info.libs.append("pthread")
+
         self.cpp_info.libdirs = ["lib"]
